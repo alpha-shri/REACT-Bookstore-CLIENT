@@ -10,11 +10,8 @@ function AddBook(props){
 
     const [book, setBook] = useState({});
 
-    // const [title, setTitle] = useState("");
-    // const [author, setAuthor] = useState("");
-    // const [description, setDescription] = useState("");
-    // const [price, setPrice] = useState("");
-
+  
+/*
     const getTitle = (event) => {
         event.preventDefault();
         // setTitle(event.target.value)
@@ -37,7 +34,7 @@ function AddBook(props){
         setBook({...book, price: event.target.value})
         
     }
-
+*/
 
     const addNewBook = async (book) => {
 
@@ -48,7 +45,7 @@ function AddBook(props){
             let response = await axios.post(url_saveBook, book);
             if(response.status == 200){
                 toast.success("Book added successfully")
-                
+
 
             }else{
                 toast.error("Oops something went wrong")
@@ -103,19 +100,31 @@ function AddBook(props){
                                         <div className="form-group">
                                             <input type="text" className="form-control"
                                              placeholder="Book Title *"
-                                             onChange={getTitle} />
+                                             onChange={ (event) => {
+                                                    event.preventDefault();
+                                                    setBook({...book, title: event.target.value})
+                                                }} />
                             </div>
                                         <div className="form-group">
                                             <input type="text" className="form-control" placeholder="Author Name *"  
-                                             onChange={getAuthor}/>
+                                             onChange={ (event) => {
+                                                event.preventDefault();
+                                                setBook({...book, author: event.target.value})
+                                            }} />
                             </div>
                                         <div className="form-group">
                                             <input type="text" className="form-control" placeholder="Description *"  
-                                             onChange={getDescription}/>
+                                            onChange={ (event) => {
+                                                event.preventDefault();
+                                                setBook({...book, description: event.target.value})
+                                            }} />
                             </div>
                                         <div className="form-group">
                                             <input type="text" className="form-control" placeholder="Price *"  
-                                             onChange={getPrice}/>
+                                            onChange={ (event) => {
+                                                event.preventDefault();
+                                                setBook({...book, price: event.target.value})
+                                            }} />
                             </div>
                                         <div className="form-group">
                                             <input type="submit" className="btnRegister" value="Register Book"
